@@ -1,0 +1,16 @@
+c:\users\tafar\documents\visual studio 2015\Projects\Prism\Prism\bin\Debug\Prism.exe.config
+c:\users\tafar\documents\visual studio 2015\Projects\Prism\Prism\bin\Debug\Prism.exe
+c:\users\tafar\documents\visual studio 2015\Projects\Prism\Prism\bin\Debug\Prism.pdb
+c:\users\tafar\documents\visual studio 2015\Projects\Prism\Prism\obj\Debug\Prism.csprojResolveAssemblyReference.cache
+c:\users\tafar\documents\visual studio 2015\Projects\Prism\Prism\obj\Debug\Prism.Properties.Resources.resources
+c:\users\tafar\documents\visual studio 2015\Projects\Prism\Prism\obj\Debug\Prism.csproj.GenerateResource.Cache
+c:\users\tafar\documents\visual studio 2015\Projects\Prism\Prism\obj\Debug\Prism.exe
+c:\users\tafar\documents\visual studio 2015\Projects\Prism\Prism\obj\Debug\Prism.pdb
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\bin\Debug\Prism.exe.config
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\obj\Debug\Prism.exe
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\obj\Debug\Prism.pdb
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\bin\Debug\Prism.exe
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\bin\Debug\Prism.pdb
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\obj\Debug\Prism.csprojResolveAssemblyReference.cache
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\obj\Debug\Prism.Properties.Resources.resources
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\obj\Debug\Prism.csproj.GenerateResource.Cache

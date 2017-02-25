@@ -1,0 +1,8 @@
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\bin\Release\Prism.exe.config
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\bin\Release\Prism.exe
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\bin\Release\Prism.pdb
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\obj\Release\Prism.csprojResolveAssemblyReference.cache
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\obj\Release\Prism.Properties.Resources.resources
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\obj\Release\Prism.csproj.GenerateResource.Cache
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\obj\Release\Prism.exe
+C:\Users\0xyg3n\Desktop\Prism\Prism\Prism\obj\Release\Prism.pdb
