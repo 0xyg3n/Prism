@@ -63,16 +63,6 @@ namespace Prism.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] bypassdlg {
-            get {
-                object obj = ResourceManager.GetObject("bypassdlg", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] cert {
             get {
                 object obj = ResourceManager.GetObject("cert", resourceCulture);
